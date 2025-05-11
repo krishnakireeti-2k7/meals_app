@@ -4,9 +4,9 @@ import 'package:meals_app/screens/meal_details.dart';
 import 'package:meals_app/widgets/meal_iteam.dart';
 
 class MealsScreen extends StatelessWidget {
-  MealsScreen({super.key, required this.meals, required this.title});
+  MealsScreen({super.key, required this.meals, this.title});
 
-  final String title;
+  final String? title;
   final List<Meal> meals;
 
   void selectMeal(BuildContext context, Meal meal) {
@@ -50,6 +50,9 @@ class MealsScreen extends StatelessWidget {
             ),
       );
     }
-    return Scaffold(appBar: AppBar(title: Text(title)), body: content);
+    if (title == null) {
+      return content;
+    }
+    return Scaffold(appBar: AppBar(title: Text(title!)), body: content);
   }
 }
