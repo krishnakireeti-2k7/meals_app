@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:meals_app/models/meal.dart';
 import 'package:meals_app/screens/catagories.dart';
 import 'package:meals_app/screens/meals.dart';
+import 'package:meals_app/widgets/main_drawer.dart';
 
 class TabsScreen extends StatefulWidget {
   TabsScreen({super.key});
@@ -56,6 +57,7 @@ class _TabsScreen extends State<TabsScreen> {
       activePageTitle = 'Favorites';
     }
     return Scaffold(
+      drawer: MainDrawer(),
       appBar: AppBar(title: Text(activePageTitle)),
       body: activePage,
       bottomNavigationBar: BottomNavigationBar(
