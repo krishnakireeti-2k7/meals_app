@@ -8,7 +8,6 @@ class TabsScreen extends StatefulWidget {
   TabsScreen({super.key});
   @override
   State<StatefulWidget> createState() {
-    // TODO: implement createState
     return _TabsScreen();
   }
 }
@@ -42,6 +41,13 @@ class _TabsScreen extends State<TabsScreen> {
     });
   }
 
+  void _setscreen(String identifier) {
+    if (identifier == 'filters') {
+    } else {
+      Navigator.of(context).pop();
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     Widget activePage = CatagoriesScreens(
@@ -57,7 +63,7 @@ class _TabsScreen extends State<TabsScreen> {
       activePageTitle = 'Favorites';
     }
     return Scaffold(
-      drawer: MainDrawer(),
+      drawer: MainDrawer(onSelectScreen: _setscreen),
       appBar: AppBar(title: Text(activePageTitle)),
       body: activePage,
       bottomNavigationBar: BottomNavigationBar(
