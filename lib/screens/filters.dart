@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:meals_app/widgets/custom_switchList.dart';
 
-enum Filters {glutenfree,lactosefree,vegetarian,vegan}
+enum Filters { glutenfree, lactosefree, vegetarian, vegan }
 
 class FiltersScreen extends StatefulWidget {
-  FiltersScreen({super.key});
-
+  FiltersScreen({super.key, required this.currentFilters});
+  final Map<Filters, bool> currentFilters;
   @override
   State<FiltersScreen> createState() {
     return _FiltersScreenState();
@@ -17,6 +17,15 @@ class _FiltersScreenState extends State<FiltersScreen> {
   var _lactosFreeFilter = false;
   var _vegitarianFilter = false;
   var _veganFilter = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _glutenFreeFilter = widget.currentFilters[Filters.glutenfree]!;
+    _lactosFreeFilter = widget.currentFilters[Filters.lactosefree]!;
+    _vegitarianFilter = widget.currentFilters[Filters.vegetarian]!;
+    _veganFilter = widget.currentFilters[Filters.vegan]!;
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
